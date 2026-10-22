@@ -67,3 +67,88 @@ button.playing {
   background: #111827;
   border-radius: 8px;
 }
+
+.stage {
+  height: 180px;
+  margin-top: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  background: #111827;
+  border-bottom: 8px solid #64748b;
+}
+
+#hero {
+  width: 64px;
+  margin-bottom: 8px;
+}
+
+.hero-head {
+  position: relative;
+  width: 48px;
+  height: 40px;
+  margin: 0 auto;
+  background: #f5c99b;
+  border-top: 12px solid #78350f;
+}
+
+.hero-head::before,
+.hero-head::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  background: #111827;
+}
+
+.hero-head::before {
+  left: 10px;
+}
+
+.hero-head::after {
+  right: 10px;
+}
+
+.hero-body {
+  height: 40px;
+  background: #60a5fa;
+  border-left: 8px solid #f5c99b;
+  border-right: 8px solid #f5c99b;
+}
+
+.hero-feet {
+  height: 20px;
+  border-left: 20px solid #cbd5e1;
+  border-right: 20px solid #cbd5e1;
+}
+
+#hero {
+  position: relative;
+}
+
+#hero.defending::after {
+  content: "";
+  position: absolute;
+  top: 35px;
+  right: -22px;
+  width: 32px;
+  height: 44px;
+  background: #38bdf8;
+  border: 4px solid #e0f2fe;
+  clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
+}
+
+#hero.healing {
+  filter: drop-shadow(0 0 12px #4ade80);
+}
+
+#hero.healing::after {
+  content: "+";
+  position: absolute;
+  top: -32px;
+  left: 22px;
+  color: #86efac;
+  font: bold 32px monospace;
+}
