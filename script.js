@@ -109,3 +109,83 @@ soundButtons.forEach(button => {
 });
 
 stopButton.addEventListener("click", clearEffect);
+
+// Pause the scenery with Stop; resume when an action is chosen.
+const stage = document.querySelector(".stage");
+
+stopButton.addEventListener("click", () => {
+  stage.classList.add("paused");
+});
+
+soundButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    stage.classList.remove("paused");
+  });
+});
+
+// First enemy prototype: approach the hero, then wait.
+const enemy = document.createElement("div");
+enemy.className = "enemy";
+stage.appendChild(enemy);
+
+// Show and swing a sword during Attack.
+const sword = document.createElement("div");
+sword.className = "sword";
+hero.appendChild(sword);
+
+let swordAnimation = null;
+
+function hideSword() {
+  if (swordAnimation) {
+    swordAnimation.cancel();
+    swordAnimation = null;
+  }
+  sword.style.visibility = "hidden";
+}
+
+soundButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    hideSword();
+
+    if (button.dataset.sound !== "attack") return;
+
+    sword.style.visibility = "visible";
+    swordAnimation = sword.animate(
+      [
+        { transform: "rotate(-65deg)" },
+        { transform: "rotate(35deg)", offset: 0.5 },
+        { transform: "rotate(0deg)" }
+      ],
+      { duration: 650, easing: "ease-out" }
+    );
+
+    swordAnimation.onfinish = hideSword;
+  });
+});
+
+stopButton.addEventListener("click", hideSword);
+
+// Show combat feedback separately from audio playback feedback.
+const combatStatus = document.createElement("p");
+combatStatus.setAttribute("role", "status");
+combatStatus.textContent = "Wait for the enemy to get close, then attack.";
+stage.after(combatStatus);
+
+document.querySelector('[data-sound="attack"]')
+  .addEventListener("click", () => {
+    if (!enemy.isConnected) {
+      combatStatus.textContent = "Enemy defeated! Refresh to try again.";
+      return;
+    }
+
+    const heroBox = hero.getBoundingClientRect();
+    const enemyBox = enemy.getBoundingClientRect();
+    const distance = enemyBox.left - heroBox.right;
+
+    if (distance >= -40 && distance <= 56) {
+      enemy.remove();
+      combatStatus.textContent = "Hit! You defeated the enemy.";
+    } else {
+      combatStatus.textContent = "Miss! Let the enemy come closer.";
+    }
+  });

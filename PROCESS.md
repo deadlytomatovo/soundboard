@@ -14,3 +14,10 @@ I opened the page to check the layout. Sound playback is not implemented yet.
 
 ## User trial
 Not carried out yet.
+
+## Developing the pixel battle idea
+I wanted the soundboard to feel more like a small game, so I chose a pixel character with action animations.
+With ChatGPT/Codex assistance, I added moving scenery, an approaching enemy, and a sword swing.
+Attack now checks distance: it misses when the enemy is far away and defeats it when close enough.
+I tested both cases in the browser and confirmed they worked.
+Health, damage, and healing gameplay are not implemented yet.
