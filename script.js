@@ -86,6 +86,9 @@ async function playSound(name, button) {
 function spawnEnemy() {
   enemy = document.createElement("div");
   enemy.className = "enemy";
+  // Later enemies approach faster, with a minimum duration of 0.8 seconds.
+  const approachSeconds = Math.max(0.8, 3 - score * 0.2);
+  enemy.style.animationDuration = `${approachSeconds}s`;
   stage.appendChild(enemy);
   enemyAttackTime = 1.2;
 }
