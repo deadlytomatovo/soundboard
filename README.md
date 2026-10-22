@@ -11,9 +11,9 @@ It started as a soundboard and developed into a battle game where each action ha
 - Resume: continue the paused game.
 - Restart: start again with 100 HP and a score of zero.
 
-Nearby enemies deal 15 damage every 1.2 seconds unless blocked.
-Defeat enemies to increase the score. New enemies appear after each defeat. Their approach duration decreases from 3 seconds by 0.2 seconds per defeat, down to a minimum of 0.8 seconds.
-At zero HP, the game ends.
+Nearby enemies deal 15 damage per hit unless blocked. Their attack interval starts at 1.2 seconds and decreases by 0.05 seconds per defeat, down to 0.4 seconds.
+Defeat enemies to increase the score. New enemies appear after each defeat. Their approach duration decreases from 3 seconds by 0.2 seconds per defeat, down to a minimum of 0.5 seconds.
+At zero HP, the character falls and fades out, followed by a GAME OVER screen showing the final score. Click Play Again to restart.
 
 ## Run locally
 You need a modern browser and Python 3 for the local server.
@@ -62,3 +62,6 @@ Testing so far has been on my Mac browser; other devices have not been verified.
 
 ## Screenshot
 ![Pixel battle game with health, score, hero, enemy and action buttons](assets/screenshot.png)
+
+## Play online
+[Play Pixel Battle](https://deadlytomatovo.github.io/soundboard/)
