@@ -36,7 +36,7 @@ let actionTime = 0;
 let shieldTime = 0;
 let healCooldown = 0;
 let attackCooldown = 0;
-let enemyAttackTime = 1.2;
+let enemyAttackTime = Math.max(0.4, 1.2 - score * 0.05);
 let spawnTime = 0;
 
 function stopAudio() {
@@ -86,11 +86,11 @@ async function playSound(name, button) {
 function spawnEnemy() {
   enemy = document.createElement("div");
   enemy.className = "enemy";
-  // Later enemies approach faster, with a minimum duration of 0.8 seconds.
-  const approachSeconds = Math.max(0.8, 3 - score * 0.2);
+  // Later enemies approach faster, with a minimum duration of 0.5 seconds.
+  const approachSeconds = Math.max(0.5, 3 - score * 0.2);
   enemy.style.animationDuration = `${approachSeconds}s`;
   stage.appendChild(enemy);
-  enemyAttackTime = 1.2;
+  enemyAttackTime = Math.max(0.4, 1.2 - score * 0.05);
 }
 
 function enemyIsClose() {
@@ -215,6 +215,47 @@ function endGame() {
   resumeButton.hidden = true;
   status.textContent = "Game over. Click Restart to try again.";
   combatStatus.textContent = `You defeated ${score} enemies.`;
+
+  const reducedMotion =
+    matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  hero.style.transformOrigin = "50% 100%";
+
+  const deathAnimation = hero.animate(
+    reducedMotion
+      ? [{ opacity: 1 }, { opacity: 0 }]
+      : [
+          { transform: "rotate(0deg)", opacity: 1 },
+          { transform: "rotate(-75deg)", opacity: 0.7, offset: 0.65 },
+          { transform: "rotate(-90deg)", opacity: 0 }
+        ],
+    {
+      duration: reducedMotion ? 150 : 800,
+      easing: "ease-in",
+      fill: "forwards"
+    }
+  );
+
+  deathAnimation.finished.then(() => {
+    const panel = document.createElement("div");
+    panel.className = "game-over-panel";
+    panel.setAttribute("role", "region");
+    panel.setAttribute("aria-label", "Game over");
+
+    const title = document.createElement("h2");
+    title.textContent = "GAME OVER";
+
+    const result = document.createElement("p");
+    result.textContent = `Enemies defeated: ${score}`;
+
+    const retry = document.createElement("button");
+    retry.textContent = "Play Again";
+    retry.addEventListener("click", () => location.reload());
+
+    panel.append(title, result, retry);
+    stage.appendChild(panel);
+    retry.focus({ preventScroll: true });
+  });
 }
 
 let previousTime = performance.now();
@@ -236,7 +277,7 @@ function tick(now) {
     if (enemyIsClose()) {
       enemyAttackTime -= seconds;
       if (enemyAttackTime <= 0) {
-        enemyAttackTime = 1.2;
+        enemyAttackTime = Math.max(0.4, 1.2 - score * 0.05);
         if (shieldTime > 0) {
           combatStatus.textContent = "Blocked! Your shield stopped the hit.";
         } else {

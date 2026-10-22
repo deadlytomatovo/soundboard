@@ -51,3 +51,12 @@ A classmate tried the version with progressively faster enemies before I explain
 They understood how to play and described the game as simple and easy to understand.
 Based on this feedback, I kept the labelled action buttons and status messages.
 This was one informal trial; it does not establish that the controls will be clear to everyone.
+
+## Difficulty and game-over feedback
+A classmate pointed out that enemy speed eventually stopped increasing.
+I lowered the minimum approach duration from 0.8 to 0.5 seconds and made enemy attack intervals decrease with the score, down to 0.4 seconds.
+These limits keep the difficulty bounded.
+
+I also requested a death animation and a GAME OVER screen.
+ChatGPT/Codex helped implement the character falling and fading out, followed by the final score and a Play Again button.
+I tried the result in my browser and liked the clearer ending.
