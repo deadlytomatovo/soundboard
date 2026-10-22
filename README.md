@@ -12,7 +12,7 @@ It started as a soundboard and developed into a battle game where each action ha
 - Restart: start again with 100 HP and a score of zero.
 
 Nearby enemies deal 15 damage every 1.2 seconds unless blocked.
-Defeat enemies to increase the score. New enemies appear after each defeat.
+Defeat enemies to increase the score. New enemies appear after each defeat. Their approach duration decreases from 3 seconds by 0.2 seconds per defeat, down to a minimum of 0.8 seconds.
 At zero HP, the game ends.
 
 ## Run locally
@@ -61,4 +61,4 @@ Blocking requires timing, and the sounds are simple synthesised tones.
 Testing so far has been on my Mac browser; other devices have not been verified.
 
 ## Screenshot
-To be added before submission.
+![Pixel battle game with health, score, hero, enemy and action buttons](assets/screenshot.png)
