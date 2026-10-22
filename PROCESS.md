@@ -21,3 +21,17 @@ With ChatGPT/Codex assistance, I added moving scenery, an approaching enemy, and
 Attack now checks distance: it misses when the enemy is far away and defeats it when close enough.
 I tested both cases in the browser and confirmed they worked.
 Health, damage, and healing gameplay are not implemented yet.
+
+## From soundboard to a small battle game
+I expanded the idea into a small pixel battle game.
+The player can attack nearby enemies, briefly defend, and heal with a cooldown.
+Enemies deal damage when close, and defeated enemies are replaced.
+Stop pauses the game, Resume continues it, and Restart starts a new round.
+
+ChatGPT/Codex helped write and reorganise the JavaScript.
+I kept the action sounds and added visual combat feedback so each button has a visible effect.
+
+## My browser checks
+I checked health loss, healing and its cooldown, blocking, defeating enemies, the score, pausing, game over, and restarting.
+These checks worked in my browser.
+This was my own testing; a trial with another person is still pending.

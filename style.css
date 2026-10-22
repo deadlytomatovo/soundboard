@@ -259,3 +259,23 @@ button.playing {
   height: 10px;
   background: #fbbf24;
 }
+
+.game-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 12px 16px;
+  background: #111827;
+  border: 2px solid #475569;
+  border-radius: 8px;
+}
+
+#health {
+  color: #86efac;
+}
+
+#score {
+  color: #fbbf24;
+}
