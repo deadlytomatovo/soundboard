@@ -45,3 +45,9 @@ I tried the revised setting and preferred the faster pace.
 Enemy damage and attack intervals stayed the same.
 
 This was also an AI suggestion I revised: I kept the gradual acceleration idea but changed the suggested timings after testing.
+
+## Trial with another person
+A classmate tried the version with progressively faster enemies before I explained the controls.
+They understood how to play and described the game as simple and easy to understand.
+Based on this feedback, I kept the labelled action buttons and status messages.
+This was one informal trial; it does not establish that the controls will be clear to everyone.
