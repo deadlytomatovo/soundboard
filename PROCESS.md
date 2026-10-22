@@ -60,3 +60,17 @@ These limits keep the difficulty bounded.
 I also requested a death animation and a GAME OVER screen.
 ChatGPT/Codex helped implement the character falling and fading out, followed by the final score and a Play Again button.
 I tried the result in my browser and liked the clearer ending.
+
+## Further classmate feedback and current limitations
+After playing the published game, a classmate suggested adding a shared real-time leaderboard where players could enter names and compare scores.
+They also noticed that enemies stopped getting faster after a certain point.
+
+I responded to the difficulty feedback by increasing the approach-speed limit and making the enemy attack interval shorten as the score grows.
+
+I decided to postpone the shared leaderboard.
+I initially thought scores could simply be saved in the webpage, but learned that browser storage would only keep scores in each player's own browser.
+A shared leaderboard needs an online service or database to receive and store scores, which the current GitHub Pages site does not provide by itself.
+
+I do not yet know how to set up that connection, so I kept the current version focused on the battle gameplay.
+I plan to learn how to connect an online database, validate submitted scores, and handle connection failures before adding this feature.
+The shared leaderboard is a future idea and is not implemented in this submission.
